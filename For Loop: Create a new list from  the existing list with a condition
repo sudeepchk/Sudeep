@@ -1,0 +1,15 @@
+# logs is available in your workspace
+
+# Intialize empty list: failures
+failures <- list()
+
+# Finish the for loop: add each failure to failures
+for (log in logs) {
+  if (!log$success) {
+    failures <- c(failures, list(log))
+  }
+}
+
+# Display the structure of failures
+str(failures)
+summary(failures)
