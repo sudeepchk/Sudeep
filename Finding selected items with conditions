@@ -1,0 +1,8 @@
+# logs is available in your workspace
+
+# Make the printout conditional: only if success
+for (log in logs) {
+ if(log$success == TRUE) {
+  print(log$timestamp)  
+  }
+}
