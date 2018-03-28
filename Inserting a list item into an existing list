@@ -1,0 +1,6 @@
+# logs is available in your workspace
+
+# Finish the for loop: add date element for each entry
+for (i in 1:length(logs)) {
+  logs[[i]]$date <- as.Date(logs[[i]]$timestamp, format = "%b %a")
+}
