@@ -1,0 +1,10 @@
+# logs is available in your workspace
+
+# Use sapply() to select the success element from each log: results
+results <- sapply(logs, `[[`, "success")
+
+# Call mean() on results
+mean(results)
+
+# Use sapply() to select the details element from each log
+sapply(logs, `[[`, "details")
