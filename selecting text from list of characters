@@ -1,0 +1,8 @@
+# Extract the name column from titanic
+pass_names <- titanic$Name
+
+# Create titles
+titles <- gsub("^.*, (.*?)\\..*$", "\\1", pass_names)
+
+# Call unique() on titles
+unique(titles)
