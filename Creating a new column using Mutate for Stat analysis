@@ -1,0 +1,2 @@
+email50 <- email50 %>%
+  mutate(num_char_cat = ifelse(num_char < med_num_char, "below median", "at or above median"))
