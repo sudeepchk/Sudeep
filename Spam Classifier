@@ -1,0 +1,24 @@
+spam_classifier <- function(x){
+  prediction <- rep(NA, length(x))
+  prediction[x > 4] <- 1
+  prediction[x >= 3 & x <= 4] <- 0
+  prediction[x >= 2.2 & x < 3] <- 0
+  prediction[x >= 1.4 & x < 2.2] <- 0
+  prediction[x > 1.25 & x < 1.4] <- 0
+  prediction[x <= 1.25] <- 0
+  return(factor(prediction, levels = c("1", "0")))
+}
+
+# conf_small and acc_small have been calculated for you
+conf_small <- table(emails_small$spam, spam_classifier(emails_small$avg_capital_seq))
+acc_small <- sum(diag(conf_small)) / sum(conf_small)
+acc_small
+
+# Apply spam_classifier to emails_full and calculate the confusion matrix: conf_full
+conf_full <- table(emails_full$spam, spam_classifier(emails_full$avg_capital_seq))
+
+# Calculate acc_full
+acc_full <- sum(diag(conf_full)) / sum(conf_full)
+
+# Print acc_full
+acc_full
