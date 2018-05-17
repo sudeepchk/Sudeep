@@ -1,0 +1,24 @@
+# world_bank_train, world_bank_test and lm_wb_log are pre-loaded
+
+# Build the log-linear model
+lm_wb_log <- lm(urb_pop ~ log(cgdp), data = world_bank_train)
+
+# Calculate rmse_train
+rmse_train <- sqrt(mean(lm_wb_log$residuals ^ 2))
+
+# The real percentage of urban population in the test set, the ground truth
+world_bank_test_truth <- world_bank_test$urb_pop
+
+# The predictions of the percentage of urban population in the test set
+world_bank_test_input <- data.frame(cgdp = world_bank_test$cgdp)
+world_bank_test_output <- predict(lm_wb_log, world_bank_test_input)
+
+# The residuals: the difference between the ground truth and the predictions
+res_test <- world_bank_test_output - world_bank_test_truth
+
+
+# Use res_test to calculate rmse_test
+rmse_test <- sqrt(mean(res_test ^ 2))
+
+# Print the ratio of the test RMSE over the training RMSE
+rmse_test / rmse_train
